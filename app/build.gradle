@@ -28,7 +28,13 @@ android {
     kapt {
         generateStubs = true
     }
-
+   /* sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res/layout'
+            ]
+        }
+    }*/
 }
 
 dependencies {

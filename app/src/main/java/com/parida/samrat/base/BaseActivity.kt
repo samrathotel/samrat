@@ -12,7 +12,7 @@ import com.parida.samrat.base.fun_defination.BaseFunctions
 import com.parida.samrat.util.CommonUtil
 
 @SuppressLint("Registered")
- abstract class BaseActivity : AppCompatActivity(),BaseFunctions,View.OnClickListener {
+ abstract class BaseActivity : AppCompatActivity(),BaseFunctions {
     override fun showShortToast(message: String) {
         CommonUtil.showToast(this,message,Toast.LENGTH_SHORT)
     }

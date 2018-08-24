@@ -17,4 +17,9 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="department">department</string>
+    <string name="default_value">0</string>
+    <string name="table_no_header">Table No -</string>
+    <string name="selected">Selected</string>
+    <string name="show_only_booked">Only Booked  </string>
 </resources>

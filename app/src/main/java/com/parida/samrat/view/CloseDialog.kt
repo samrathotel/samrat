@@ -33,8 +33,4 @@ class CloseDialog : BaseDialogFragment() {
         binding.onClickListener = this
         return binding.root
     }
-
-    fun saveDoNotShowCloseDialog(){
-        getSharedPref().edit().putBoolean(PrefKey.APP_CLOSE,true).apply()
-    }
 }

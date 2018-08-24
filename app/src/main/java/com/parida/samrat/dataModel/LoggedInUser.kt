@@ -1,14 +1,5 @@
 package com.parida.samrat.dataModel
 
-class LoggedInUser {
-
-    var isLoggedIn:Boolean = false
-    var name:String = ""
-    var department:String = ""
-
-    constructor(isLoggedIn: Boolean, name: String, department: String) {
-        this.isLoggedIn = isLoggedIn
-        this.name = name
-        this.department = department
-    }
-}
+/**
+ * This data class holds all the details of the logged user*/
+data class LoggedInUser(var isLoggedIn: Boolean, var name: String, var department: String)
