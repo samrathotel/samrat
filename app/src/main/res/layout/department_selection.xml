@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="departmentViewModel"
+            type="com.parida.samrat.viewModel.DepartmentViewModel"/>
     </data>
 
     <!--Ui root tag-->
@@ -14,15 +16,23 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tvUserName"
+            android:textSize="20sp"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:text="@{departmentViewModel.userName}"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:padding="@dimen/margin_16"
             android:textStyle="bold"
+            android:layout_toEndOf="@id/tvUserName"
             android:id="@+id/tvSelectDepartment"
             android:text="@string/select_department"/>
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvSelectDepartment"
+            android:layout_below="@id/tvUserName"
             >
 
             <android.support.v7.widget.RecyclerView

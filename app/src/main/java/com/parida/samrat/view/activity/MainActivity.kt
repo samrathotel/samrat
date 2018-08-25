@@ -1,6 +1,7 @@
-package com.parida.samrat.view
+package com.parida.samrat.view.activity
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -33,5 +34,18 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
+    var isClickedTwice = false
+    override fun onBackPressed() {
+
+        if (isClickedTwice){
+            super.onBackPressed()
+            return
+        }
+        this.isClickedTwice = true
+        showShortToast("Press again to exit")
+        Handler().postDelayed({
+            isClickedTwice = false
+        },2000)
     }
 }

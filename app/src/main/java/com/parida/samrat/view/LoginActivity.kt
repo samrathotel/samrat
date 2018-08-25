@@ -1,15 +1,19 @@
 package com.parida.samrat.view
 
+import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.view.View
-import com.parida.samrat.App
 import com.parida.samrat.R
 import com.parida.samrat.base.BaseActivity
+import com.parida.samrat.dataModel.ErrorDataForEditText
+import com.parida.samrat.dataModel.LoggedInUser
 import com.parida.samrat.databinding.ActivityLoginBinding
-import com.parida.samrat.util.PrefKey
+import com.parida.samrat.util.Key
+import com.parida.samrat.view.activity.DepartmentActivity
+import com.parida.samrat.view.activity.MainActivity
 import com.parida.samrat.viewModel.LoginViewModel
 
 class LoginActivity : BaseActivity() {
@@ -22,9 +26,33 @@ class LoginActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         loginViewModel=ViewModelProviders.of(this).get(LoginViewModel::class.java)
         binding.logIn = loginViewModel
+        observeErrorData(loginViewModel.errorDataForEditText)
+        observeUserData(loginViewModel.userData)
+    }
 
-        loginViewModel.errorData.observe(this, Observer {
-            val etId= it!!.et.id
+    private fun observeUserData(userData: MutableLiveData<LoggedInUser>) {
+        userData.observe(this, Observer {
+            if (it!!.isValid){
+                if (it.hasMultipleDepartment){
+                    val userIntent=Intent(this,DepartmentActivity::class.java)
+                    userIntent.putExtra(Key.USER_NAME,it.userName)
+                    userIntent.putExtra(Key.DEPARTMENT_SELECTION,it.hasMultipleDepartment)
+                    startActivity(userIntent)
+                }
+                else{
+                    val userIntent=Intent(this,MainActivity::class.java)
+                    userIntent.putExtra(Key.USER_NAME,it.userName)
+                    userIntent.putExtra(Key.DEPARTMENT,it.department)
+                    startActivity(userIntent)
+                }
+
+            }
+        })
+    }
+
+    private fun observeErrorData(errorDataForEditText: MutableLiveData<ErrorDataForEditText>) {
+        errorDataForEditText.observe(this, Observer {
+            val etId= it!!.etId
             when (etId){
                 binding.etLoginPin.id ->{
                     binding.etLoginPin.error = it.message
@@ -33,9 +61,6 @@ class LoginActivity : BaseActivity() {
                     binding.etMobile.error = it.message
                 }
             }
-        })
-        loginViewModel.userData.observe(this, Observer {
-
         })
     }
 
