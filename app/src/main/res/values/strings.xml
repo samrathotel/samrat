@@ -10,7 +10,7 @@
     <string name="no">No</string>
     <string name="finger_print">Finger Print</string>
     <string name="do_not_show_again">Do not show again  </string>
-    <string name="select_department">Select your department</string>
+    <string name="select_department">Please select your department</string>
     <string name="mobile_hint">Enter mobile number</string>
     <string name="login_pin">Enter Login PIN</string>
     <string name="title_activity_main">MainActivity</string>
@@ -21,6 +21,6 @@
     <string name="default_value">0</string>
     <string name="table_no_header">Table No -</string>
     <string name="selected">Selected</string>
-    <string name="hi">Hi  </string>
     <string name="show_only_booked">Only Booked  </string>
+    <string name="hi">Hi</string>
 </resources>

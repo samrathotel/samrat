@@ -1,4 +1,4 @@
-package com.parida.samrat.base
+package com.parida.samrat.util.base
 
 import android.arch.lifecycle.ViewModel
 

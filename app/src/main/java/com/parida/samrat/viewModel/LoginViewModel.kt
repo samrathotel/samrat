@@ -3,9 +3,9 @@ package com.parida.samrat.viewModel
 import android.arch.lifecycle.MutableLiveData
 import android.widget.EditText
 import com.parida.samrat.App
-import com.parida.samrat.base.BaseViewModel
-import com.parida.samrat.dataModel.ErrorDataForEditText
-import com.parida.samrat.dataModel.LoggedInUser
+import com.parida.samrat.util.base.BaseViewModel
+import com.parida.samrat.model.ErrorDataForEditText
+import com.parida.samrat.model.LoggedInUser
 /**
  * This view model do the login validation for user
  * */

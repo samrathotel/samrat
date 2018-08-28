@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.parida.samrat.R
-import com.parida.samrat.base.BaseDialogFragment
+import com.parida.samrat.util.base.BaseDialogFragment
 import com.parida.samrat.databinding.CloseDialogBinding
 
 /**

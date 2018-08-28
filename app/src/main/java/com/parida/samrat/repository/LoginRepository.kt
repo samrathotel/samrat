@@ -7,8 +7,13 @@ package com.parida.samrat.repository
  */
 class LoginRepository {
 
-    fun getDepartments(userName:String): Array<String> {
+    fun getDepartments(userName:String): ArrayList<String> {
         //TODO call APi for getting departments or get it from room
-        return arrayOf("Cashier","Manager","Waiter","Chef")
+        val list:ArrayList<String> =  ArrayList()
+        list.add("Cashier")
+        list.add("Manager")
+        list.add("Waiter")
+        list.add("Chef")
+        return list
     }
 }

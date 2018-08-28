@@ -6,7 +6,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.parida.samrat.R
-import com.parida.samrat.base.BaseActivity
+import com.parida.samrat.util.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {

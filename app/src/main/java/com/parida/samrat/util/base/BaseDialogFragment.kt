@@ -1,4 +1,4 @@
-package com.parida.samrat.base
+package com.parida.samrat.util.base
 
 import android.app.DialogFragment
 import android.content.SharedPreferences

@@ -1,9 +1,10 @@
-package com.parida.samrat
+package com.parida.samrat.view.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import com.parida.samrat.base.BaseActivity
+import com.parida.samrat.R
+import com.parida.samrat.util.base.BaseActivity
 import com.parida.samrat.util.Key
 import com.parida.samrat.view.LoginActivity
 
