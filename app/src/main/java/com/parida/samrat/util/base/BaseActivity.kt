@@ -1,18 +1,18 @@
 package com.parida.samrat.util.base
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
-import com.parida.samrat.R
 import com.parida.samrat.base.fun_defination.BaseFunctions
 import com.parida.samrat.util.CommonUtil
 
 @SuppressLint("Registered")
  abstract class BaseActivity : AppCompatActivity(),BaseFunctions {
+    override fun appendLog(message: String) {
+    }
     override fun showShortToast(message: String) {
         CommonUtil.showToast(this,message,Toast.LENGTH_SHORT)
     }
@@ -36,11 +36,21 @@ import com.parida.samrat.util.CommonUtil
     override fun getSharedPref(): SharedPreferences {
         return CommonUtil.getSharedPref(this)!!
     }
-    var tag:String = ""
+    var className:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        tag = this.javaClass.simpleName
+        className = this.javaClass.simpleName
+        appendLog("$className created")
+    }
 
+    override fun onRestart() {
+        super.onRestart()
+        appendLog("$className restarted")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        appendLog("$className resumed")
     }
 }

@@ -28,18 +28,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.LoginActivity"
-            android:noHistory="true"
+            android:name=".view.activity.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".view.activity.MainActivity"
             android:label="@string/title_activity_main">
-
-        </activity>
-        <activity
-            android:name=".view.activity.DepartmentActivity"
-            android:noHistory="true">
 
         </activity>
     </application>

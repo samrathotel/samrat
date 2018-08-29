@@ -13,5 +13,6 @@ class CommonUtil {
         fun getSharedPref(context: Context): SharedPreferences? {
             return context.getSharedPreferences(context.getString(R.string.app_name), Context.MODE_PRIVATE)
         }
+
     }
 }

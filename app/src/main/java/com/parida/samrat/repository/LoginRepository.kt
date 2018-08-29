@@ -1,5 +1,8 @@
 package com.parida.samrat.repository
 
+import com.parida.samrat.App
+import com.parida.samrat.model.LoggedInUser
+
 /**
  * This class helps to validate user data and fetch user data after login.
  * All API calls for login validation is written here.
@@ -7,13 +10,13 @@ package com.parida.samrat.repository
  */
 class LoginRepository {
 
-    fun getDepartments(userName:String): ArrayList<String> {
-        //TODO call APi for getting departments or get it from room
-        val list:ArrayList<String> =  ArrayList()
-        list.add("Cashier")
-        list.add("Manager")
-        list.add("Waiter")
-        list.add("Chef")
-        return list
+    fun verifyUser(mobile: String,pin:String):LoggedInUser{
+        //TODO call api for verifying user
+        val departmentList = ArrayList<String>()
+        departmentList.add(App.DEPARTMENT_MANAGER)
+        departmentList.add(App.DEPARTMENT_WAITER)
+        departmentList.add(App.DEPARTMENT_CASHIER)
+        departmentList.add(App.DEPARTMENT_KITCHEN)
+        return LoggedInUser(true,true,"Samrat",true, departmentList)
     }
 }

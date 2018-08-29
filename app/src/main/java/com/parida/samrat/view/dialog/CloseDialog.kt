@@ -1,4 +1,4 @@
-package com.parida.samrat.view
+package com.parida.samrat.view.dialog
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle

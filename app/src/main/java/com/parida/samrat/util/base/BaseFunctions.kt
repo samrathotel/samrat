@@ -40,4 +40,9 @@ interface BaseFunctions{
     fun getInflatedView(layout: Int): View
 
     fun getSharedPref():SharedPreferences
+
+    /**
+     * this function helps to write message to the log file
+     * */
+    fun appendLog(message:String)
 }

@@ -27,6 +27,7 @@ class DepartmentAdapter(private val callBack:ActivityCallback,private val list:A
 
         fun bind(row:String){
             binding.setVariable(BR.department,row)
+            binding.setVariable(BR.departmentViewHolder,this)
             binding.executePendingBindings()
         }
 

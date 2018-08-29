@@ -4,11 +4,11 @@
 
     <data>
         <variable
-            name="departmentViewModel"
-            type="com.parida.samrat.viewModel.DepartmentViewModel"/>
+            name="loggedUser"
+            type="com.parida.samrat.model.LoggedInUser"/>
     </data>
 
-    <!--Ui root tag-->
+    <!--Ui root className-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,7 +19,7 @@
             android:id="@+id/tvUserName"
             android:textSize="20sp"
             android:padding="@dimen/activity_horizontal_margin"
-            android:text="@{departmentViewModel.userName}"/>
+            android:text="@{`Hello  ` + loggedUser.userName}"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.parida.samrat.view
+package com.parida.samrat.view.fragment
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Observer
@@ -6,30 +6,31 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.parida.samrat.App
 import com.parida.samrat.R
-import com.parida.samrat.util.base.BaseActivity
+import com.parida.samrat.databinding.ActivityLoginBinding
 import com.parida.samrat.model.ErrorDataForEditText
 import com.parida.samrat.model.LoggedInUser
-import com.parida.samrat.databinding.ActivityLoginBinding
 import com.parida.samrat.util.Key
-import com.parida.samrat.view.activity.DepartmentActivity
+import com.parida.samrat.util.base.BaseFragment
 import com.parida.samrat.view.activity.MainActivity
 import com.parida.samrat.viewModel.LoginViewModel
 
 /**
  * This activity shows the login page where user has to put his mobile no and pin.
 After verification of user it will move to next screen.*/
-class LoginActivity : BaseActivity() {
+class LoginFragment : BaseFragment() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var loginViewModel: LoginViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // creating binding and view model objects
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        binding = DataBindingUtil.inflate(inflater,R.layout.activity_login,container,false)
+        loginViewModel = ViewModelProviders.of(activity!!).get(LoginViewModel::class.java)
 
         // setting binding variables
         binding.logIn = loginViewModel
@@ -37,8 +38,8 @@ class LoginActivity : BaseActivity() {
         // observing data
         observeErrorData(loginViewModel.errorDataForEditText)
         observeUserData(loginViewModel.userData)
+        return binding.root
     }
-
     /**
      * this function observes LoggedInUser data.
      * @param userData live data of user details coming via LoginViewModel.
@@ -50,17 +51,18 @@ class LoginActivity : BaseActivity() {
                 // if user is accessible for multiple departments then asking for department selection
                 // or directly going to the home page of his particular department
                 if (it.hasMultipleDepartment) {
-                    val userIntent = Intent(this, DepartmentActivity::class.java)
-                    userIntent.putExtra(Key.USER_NAME, it.userName)
-                    userIntent.putExtra(Key.DEPARTMENT_SELECTION, it.hasMultipleDepartment)
-                    startActivity(userIntent)
+                    activity!!.supportFragmentManager.beginTransaction()
+                            .replace(R.id.loginContainer,
+                                    DepartmentFragment(),"" + App.tagJoiner + DepartmentFragment::class.java.simpleName)
+                            .commit()
                 } else {
-                    val userIntent = Intent(this, MainActivity::class.java)
+                    val userIntent = Intent(activity, MainActivity::class.java)
                     userIntent.putExtra(Key.USER_NAME, it.userName)
-                    userIntent.putExtra(Key.DEPARTMENT, it.department)
+                    userIntent.putExtra(Key.DEPARTMENT, it.departmentList[0])
                     startActivity(userIntent)
                 }
-
+            }else{
+                showLongToast("Wrong credentials!")
             }
         })
     }
