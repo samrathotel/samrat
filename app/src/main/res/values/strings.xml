@@ -23,4 +23,6 @@
     <string name="selected">Selected</string>
     <string name="show_only_booked">Only Booked  </string>
     <string name="try_demo">Try a demo</string>
+    <string name="free_table">Free Table</string>
+    <string name="table_no">Table No</string>
 </resources>

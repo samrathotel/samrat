@@ -20,7 +20,7 @@ import com.parida.samrat.view.activity.MainActivity
 import com.parida.samrat.viewModel.LoginViewModel
 
 /**
- * This activity shows the login page where user has to put his mobile no and pin.
+ * This fragment shows the login page where user has to put his mobile no and pin.
 After verification of user it will move to next screen.*/
 class LoginFragment : BaseFragment() {
 

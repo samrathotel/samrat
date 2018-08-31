@@ -11,9 +11,17 @@ class LoginActivity : BaseActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_container)
+        openLoginFragment()
+    }
+
+    private fun openLoginFragment() {
         supportFragmentManager.beginTransaction()
                 .replace(R.id.loginContainer,LoginFragment(),className + App.tagJoiner + LoginFragment::class.java.simpleName)
                 .commit()
     }
 
+    override fun onResume() {
+        super.onResume()
+        openLoginFragment()
+    }
 }
