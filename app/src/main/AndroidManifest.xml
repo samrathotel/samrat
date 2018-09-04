@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!--registering application-->
+    <!-- registering application -->
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--registering used components like activities,service,receiver etc inside application-->
+        <!-- registering used components like activities,service,receiver etc inside application -->
         <activity
             android:name=".view.activity.SplashActivity"
             android:noHistory="true"
@@ -32,10 +32,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
+            android:name=".view.activity.MainActivityKitchen"
+            android:label="@string/title_activity_main"></activity>
+        <activity
             android:name=".view.activity.MainActivity"
-            android:label="@string/title_activity_main">
-
-        </activity>
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

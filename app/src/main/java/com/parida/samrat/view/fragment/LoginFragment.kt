@@ -16,7 +16,7 @@ import com.parida.samrat.model.ErrorDataForEditText
 import com.parida.samrat.model.LoggedInUser
 import com.parida.samrat.util.Key
 import com.parida.samrat.util.base.BaseFragment
-import com.parida.samrat.view.activity.MainActivity
+import com.parida.samrat.view.activity.MainActivityKitchen
 import com.parida.samrat.viewModel.LoginViewModel
 
 /**
@@ -56,7 +56,7 @@ class LoginFragment : BaseFragment() {
                                     DepartmentFragment(),"" + App.tagJoiner + DepartmentFragment::class.java.simpleName)
                             .commit()
                 } else {
-                    val userIntent = Intent(activity, MainActivity::class.java)
+                    val userIntent = Intent(activity, MainActivityKitchen::class.java)
                     userIntent.putExtra(Key.USER_NAME, it.userName)
                     userIntent.putExtra(Key.DEPARTMENT, it.departmentList[0])
                     startActivity(userIntent)

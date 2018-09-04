@@ -3,10 +3,10 @@ package com.parida.samrat.view.activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import com.parida.samrat.App
 import com.parida.samrat.R
 import com.parida.samrat.util.Key
 import com.parida.samrat.util.base.BaseActivity
-import com.parida.samrat.view.fragment.LoginFragment
 
 /**
  * This is the first class that launches when user clicks the app icon
@@ -31,11 +31,17 @@ class SplashActivity : BaseActivity() {
         // check if user has already logged in show home page or ask him to login.
         else {
             val userName = getSharedPref().getString(Key.USER_NAME, "")
-            if (userName.isEmpty())
+            val department = getSharedPref().getString(Key.DEPARTMENT,"")
+            if (userName.isEmpty() || department.isEmpty())
                 startActivity(Intent(this, LoginActivity::class.java))
             else {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, when(department) {
+                    // TODO open respective main activity according to department
+                 App.DEPARTMENT_KITCHEN -> MainActivityKitchen::class.java
+                    else -> MainActivity::class.java
+                })
                 intent.putExtra(Key.USER_NAME, userName)
+                intent.putExtra(Key.DEPARTMENT,department)
                 startActivity(intent)
             }
         }

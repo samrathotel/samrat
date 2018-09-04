@@ -28,7 +28,7 @@ android {
     kapt {
         generateStubs = true
     }
-   /* sourceSets {
+    /* sourceSets {
         main {
             res.srcDirs = [
                     'src/main/res/layout'
@@ -54,8 +54,8 @@ dependencies {
     implementation 'androidx.collection:collection-ktx'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx'
     implementation 'androidx.lifecycle:lifecycle-reactivestreams-ktx'
-    implementation 'android.arch.navigation:navigation-common-ktx'
-    implementation 'android.arch.navigation:navigation-fragment-ktx'*/
+    implementation 'android.arch.navigation_kitchen:navigation_kitchen-common-ktx'
+    implementation 'android.arch.navigation_kitchen:navigation_kitchen-fragment-ktx'*/
 
     def lifecycle_version = "1.1.1"
     // ViewModel and LiveData

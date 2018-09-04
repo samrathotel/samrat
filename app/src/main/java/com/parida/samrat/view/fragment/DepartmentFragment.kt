@@ -10,11 +10,13 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.parida.samrat.App
 import com.parida.samrat.R
 import com.parida.samrat.databinding.DepartmentSelectionBinding
 import com.parida.samrat.util.Key
 import com.parida.samrat.util.base.BaseFragment
 import com.parida.samrat.view.activity.MainActivity
+import com.parida.samrat.view.activity.MainActivityKitchen
 import com.parida.samrat.view.adapter.DepartmentAdapter
 import com.parida.samrat.viewModel.LoginViewModel
 import kotlinx.android.synthetic.main.department_selection.view.*
@@ -27,7 +29,11 @@ class DepartmentFragment : BaseFragment(), DepartmentAdapter.ActivityCallback {
     private lateinit var loginViewModel: LoginViewModel
 
     override fun onDepartmentSelected(department: String) {
-        val intent = Intent(context, MainActivity::class.java)
+        // TODO open respective main activity according to department
+        val intent = Intent(context, when (department){
+            App.DEPARTMENT_KITCHEN -> MainActivityKitchen::class.java
+            else -> MainActivity::class.java
+        })
         intent.putExtra(Key.DEPARTMENT, department)
         intent.putExtra(Key.USER_NAME, loginViewModel.userData.value!!.userName)
         startActivity(intent)

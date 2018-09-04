@@ -25,4 +25,13 @@
     <string name="try_demo">Try a demo</string>
     <string name="free_table">Free Table</string>
     <string name="table_no">Table No</string>
+    <string name="orders">Orders</string>
+    <string name="progress">Progress</string>
+    <string name="delivered">Delivered</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 </resources>
