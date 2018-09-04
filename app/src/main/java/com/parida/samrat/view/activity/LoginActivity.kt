@@ -19,9 +19,4 @@ class LoginActivity : BaseActivity(){
                 .replace(R.id.loginContainer,LoginFragment(),className + App.tagJoiner + LoginFragment::class.java.simpleName)
                 .commit()
     }
-
-    override fun onResume() {
-        super.onResume()
-        openLoginFragment()
-    }
 }
