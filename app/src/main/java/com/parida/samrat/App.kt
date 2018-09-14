@@ -1,8 +1,8 @@
 package com.parida.samrat
 
 import android.app.Application
-import android.content.Context
-import android.content.SharedPreferences
+import android.arch.persistence.room.Room
+import com.parida.samrat.db.DataBaseSamrat
 
 class App : Application() {
     companion object {
@@ -12,5 +12,15 @@ class App : Application() {
         const val DEPARTMENT_MANAGER = "manager"
         const val DEPARTMENT_WAITER = "waiter"
         const val DEPARTMENT_CASHIER = "cashier"
+
+        lateinit var db: DataBaseSamrat
     }
+
+    override fun onCreate() {
+        super.onCreate()
+        db=Room.databaseBuilder(applicationContext,DataBaseSamrat::class.java,DataBaseSamrat::javaClass.name).build()
+
+    }
+
+
 }
