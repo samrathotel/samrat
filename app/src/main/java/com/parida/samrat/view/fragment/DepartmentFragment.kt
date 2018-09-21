@@ -18,7 +18,7 @@ import com.parida.samrat.util.base.BaseFragment
 import com.parida.samrat.view.activity.MainActivity
 import com.parida.samrat.view.activity.MainActivityKitchen
 import com.parida.samrat.view.adapter.DepartmentAdapter
-import com.parida.samrat.viewModel.LoginViewModel
+import com.parida.samrat.vm.LoginVM
 import kotlinx.android.synthetic.main.department_selection.view.*
 
 /**
@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.department_selection.view.*
 class DepartmentFragment : BaseFragment(), DepartmentAdapter.ActivityCallback {
 
     private lateinit var bindView: View
-    private lateinit var loginViewModel: LoginViewModel
+    private lateinit var loginVM: LoginVM
 
     override fun onDepartmentSelected(department: String) {
         // TODO open respective main activity according to department
@@ -35,7 +35,7 @@ class DepartmentFragment : BaseFragment(), DepartmentAdapter.ActivityCallback {
             else -> MainActivity::class.java
         })
         intent.putExtra(Key.DEPARTMENT, department)
-        intent.putExtra(Key.USER_NAME, loginViewModel.userData.value!!.userName)
+        intent.putExtra(Key.USER_NAME, loginVM.userData.value!!.userName)
         startActivity(intent)
         activity!!.supportFragmentManager.popBackStackImmediate()
     }
@@ -44,9 +44,9 @@ class DepartmentFragment : BaseFragment(), DepartmentAdapter.ActivityCallback {
         val binding = DataBindingUtil.inflate<DepartmentSelectionBinding>(inflater, R.layout.department_selection, container, false)
         bindView = binding.root
 
-        loginViewModel = ViewModelProviders.of(activity!!).get(LoginViewModel::class.java)
-        binding.loggedUser = loginViewModel.userData.value
-        observeDepartmentData(loginViewModel.departmentLiveData)
+        loginVM = ViewModelProviders.of(activity!!).get(LoginVM::class.java)
+        binding.loggedUser = loginVM.userData.value
+        observeDepartmentData(loginVM.departmentLiveData)
         return bindView
     }
 

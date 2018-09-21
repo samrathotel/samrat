@@ -8,5 +8,6 @@ class Key {
         const val NO_OF_TABLES : String = "table"
         const val USER_NAME = "user name"
         const val MOBILE = "mobile"
+        const val PROFILE_VISIT = "profile visit"
     }
 }

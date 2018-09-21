@@ -6,7 +6,7 @@
     <data>
         <variable
             name="logIn"
-            type="com.parida.samrat.viewModel.LoginViewModel"/>
+            type="com.parida.samrat.vm.LoginVM"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

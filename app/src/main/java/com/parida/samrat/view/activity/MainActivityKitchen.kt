@@ -7,7 +7,7 @@ import android.support.design.widget.BottomNavigationView
 import com.parida.samrat.R
 import com.parida.samrat.util.Key
 import com.parida.samrat.util.base.BaseActivity
-import com.parida.samrat.viewModel.MainCommonViewModel
+import com.parida.samrat.vm.MainCommonVM
 import kotlinx.android.synthetic.main.activity_main_kitchen.*
 
 /**
@@ -17,28 +17,32 @@ class MainActivityKitchen : BaseActivity() {
     private var isClickedTwice = false
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.navigation_home -> {
-                message.setText(R.string.title_home)
+            R.id.navigation_order -> {
+
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_progress ->{
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_deliver -> {
+
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                message.setText(R.string.title_dashboard)
+
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_notifications -> {
-                message.setText(R.string.title_notifications)
-                return@OnNavigationItemSelectedListener true
-            }
+
         }
         false
     }
 
-    private lateinit var mainCommonViewModel: MainCommonViewModel
+    private lateinit var mainCommonVM: MainCommonVM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_kitchen)
-        mainCommonViewModel=ViewModelProviders.of(this).get(MainCommonViewModel::class.java)
+        mainCommonVM=ViewModelProviders.of(this).get(MainCommonVM::class.java)
         getUserDetailAndSave()
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
@@ -65,7 +69,7 @@ class MainActivityKitchen : BaseActivity() {
             },3000)
         }
         else
-        mainCommonViewModel.saveUserDetails(getSharedPref(),userName,department)
+        mainCommonVM.saveUserDetails(getSharedPref(),userName,department)
     }
 
     override fun onBackPressed() {
@@ -81,4 +85,8 @@ class MainActivityKitchen : BaseActivity() {
             isClickedTwice = false
         },2000)
     }
+}
+
+class ForgotToDoException(name: String) : Throwable() {
+
 }

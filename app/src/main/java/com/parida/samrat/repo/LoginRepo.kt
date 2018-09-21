@@ -1,4 +1,4 @@
-package com.parida.samrat.repository
+package com.parida.samrat.repo
 
 import com.parida.samrat.App
 import com.parida.samrat.model.LoggedInUser
@@ -8,7 +8,7 @@ import com.parida.samrat.model.LoggedInUser
  * All API calls and db operation for login validation is written here.
  * Created by ANIL on 25/08/18.
  */
-class LoginRepository : BaseRepository(){
+class LoginRepo : BaseRepo(){
 
     fun verifyUser(mobile: String,pin:String):LoggedInUser{
         val userFromDb = App.db.getUserDao().getLoggedInUserDetail(mobile)

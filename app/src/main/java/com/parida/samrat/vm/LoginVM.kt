@@ -1,16 +1,16 @@
-package com.parida.samrat.viewModel
+package com.parida.samrat.vm
 
 import android.arch.lifecycle.MutableLiveData
 import android.widget.EditText
 import com.parida.samrat.model.ErrorDataForEditText
 import com.parida.samrat.model.LoggedInUser
-import com.parida.samrat.repository.LoginRepository
+import com.parida.samrat.repo.LoginRepo
 import com.parida.samrat.util.base.BaseViewModel
 
 /**
  * This view model do the login validation for user
  * */
-class LoginViewModel : BaseViewModel() {
+class LoginVM : BaseViewModel() {
 
     var userData:MutableLiveData<LoggedInUser> = MutableLiveData()
     var departmentLiveData:MutableLiveData<ArrayList<String>> = MutableLiveData()
@@ -28,7 +28,7 @@ class LoginViewModel : BaseViewModel() {
     }
 
     fun verifyUserCredentials(mobile:String, pin:String){
-        userData.value = LoginRepository().verifyUser(mobile,pin)
+        userData.value = LoginRepo().verifyUser(mobile,pin)
         departmentLiveData.value = userData.value!!.departmentList
     }
 

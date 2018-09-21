@@ -1,10 +1,10 @@
-package com.parida.samrat.viewModel
+package com.parida.samrat.vm
 
 import android.content.SharedPreferences
 import com.parida.samrat.util.Key
 import com.parida.samrat.util.base.BaseViewModel
 
-class MainCommonViewModel : BaseViewModel() {
+class MainCommonVM : BaseViewModel() {
     private val userDetail:HashMap<String,String> = HashMap()
 
     fun saveUserDetails(sPref:SharedPreferences,userName:String,department:String){

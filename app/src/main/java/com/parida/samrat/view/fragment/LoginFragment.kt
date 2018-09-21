@@ -17,7 +17,7 @@ import com.parida.samrat.model.LoggedInUser
 import com.parida.samrat.util.Key
 import com.parida.samrat.util.base.BaseFragment
 import com.parida.samrat.view.activity.MainActivityKitchen
-import com.parida.samrat.viewModel.LoginViewModel
+import com.parida.samrat.vm.LoginVM
 
 /**
  * This fragment shows the login page where user has to put his mobile no and pin.
@@ -25,24 +25,24 @@ After verification of user it will move to next screen.*/
 class LoginFragment : BaseFragment() {
 
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var loginViewModel: LoginViewModel
+    private lateinit var loginVM: LoginVM
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // creating binding and view model objects
         binding = DataBindingUtil.inflate(inflater,R.layout.activity_login,container,false)
-        loginViewModel = ViewModelProviders.of(activity!!).get(LoginViewModel::class.java)
+        loginVM = ViewModelProviders.of(activity!!).get(LoginVM::class.java)
 
         // setting binding variables
-        binding.logIn = loginViewModel
+        binding.logIn = loginVM
 
         // observing data
-        observeErrorData(loginViewModel.errorDataForEditText)
-        observeUserData(loginViewModel.userData)
+        observeErrorData(loginVM.errorDataForEditText)
+        observeUserData(loginVM.userData)
         return binding.root
     }
     /**
      * this function observes LoggedInUser data.
-     * @param userData live data of user details coming via LoginViewModel.
+     * @param userData live data of user details coming via LoginVM.
      * */
     private fun observeUserData(userData: MutableLiveData<LoggedInUser>) {
         userData.observe(this, Observer {
@@ -68,7 +68,7 @@ class LoginFragment : BaseFragment() {
     }
     /**
      * observes ErrorDataForEditText
-     * @param errorDataForEditText live data of ErrorDataForEditText coming via LoginViewModel
+     * @param errorDataForEditText live data of ErrorDataForEditText coming via LoginVM
      * */
     private fun observeErrorData(errorDataForEditText: MutableLiveData<ErrorDataForEditText>) {
         errorDataForEditText.observe(this, Observer {
