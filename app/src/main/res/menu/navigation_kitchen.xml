@@ -11,7 +11,7 @@
         android:id="@+id/navigation_progress"
         android:icon="@drawable/ic_repeat_black_24dp"
         android:title="@string/progress" />
-    
+
     <item
         android:id="@+id/navigation_deliver"
         android:icon="@drawable/ic_playlist_add_check_black_24dp"
